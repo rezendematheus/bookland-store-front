@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import CartTableComponent from "../Components/Cart/CartTable"
+import CartTableComponent from "../Components/Cart/CartTable/CartTable"
 
 export function CheckoutPage() {
     const books = [

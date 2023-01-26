@@ -1,33 +1,6 @@
-import styled from "styled-components"
-import BookInCart from "./BookInCart.js"
-export default function CartTableComponent({books}){
-    return (
-        <CartTable>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantidade</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {books.map(book =>
-                        <BookInCart
-                            imagem={book.imagem}
-                            titulo={book.titulo}
-                            valor={book.valor}
-                            quantidade={book.quantidade}
-                            id={book.id}
-                        />
-                    )}
-                </tbody>
-            </table>
-        </CartTable>
-    )
-}
+import styled from 'styled-components'
 
-const CartTable = styled.div`
+export const CartTable = styled.div`
     table{
         box-sizing: border-box;
         font-family: Roboto;
