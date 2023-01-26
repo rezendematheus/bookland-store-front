@@ -1,4 +1,5 @@
 import Homepage from "./Pages/Homepage/Homepage";
+import { CheckoutPage } from "./pages/CheckoutPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
