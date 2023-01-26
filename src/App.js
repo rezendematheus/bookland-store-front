@@ -1,5 +1,5 @@
 import Homepage from "./Pages/Homepage/Homepage";
-import { CheckoutPage } from "./pages/CheckoutPage";
+import { CheckoutPage } from "./Pages/CheckoutPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategoryPage from "./Pages/Categorypage/CategoryPage";
 import AuthProvider from "./Context/auth";
