@@ -73,7 +73,7 @@ export default function CadastroPage(){
             >
                 <RenderButton state={disabled} text="Cadastrar" />
             </button>
-            <Link to={`/`}>
+            <Link to={`/login`}>
                 <Logar>Já tem uma conta? Entre agora!</Logar>
             </Link>
         </Wrapper>
