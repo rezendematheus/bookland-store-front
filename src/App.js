@@ -1,5 +1,5 @@
 import Homepage from "./Pages/Homepage/Homepage";
-import { CheckoutPage } from "./Pages/CheckoutPage";
+import { CartPage } from "./Pages/CartPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CategoryPage from "./Pages/Categorypage/CategoryPage";
 import AuthProvider from "./Context/auth";
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/category" element={<CategoryPage/>}/>
-        <Route path="/checkout" element={<CheckoutPage/>} /> 
+        <Route path="/cart" element={<CartPage/>} /> 
       </Routes>
     </BrowserRouter>
     </AuthProvider>

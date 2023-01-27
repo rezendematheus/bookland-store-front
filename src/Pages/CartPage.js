@@ -2,7 +2,7 @@ import ButtomComponent from "../Components/Cart/ButtomComponent.js"
 import { Container, TitleCompontent } from "../Components/Cart/CartStyles.js"
 import CartTableComponent from "../Components/Cart/CartTable/CartTable"
 
-export function CheckoutPage() {
+export function CartPage() {
     const books = [
         {
             imagem: "https://lojasaraivanew.vtexassets.com/arquivos/ids/198381-1200-auto?v=638068006528530000&width=1200&height=auto&aspect=true",
