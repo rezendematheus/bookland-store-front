@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import ButtomComponent from "../Components/Cart/ButtomComponent.js"
+import { Container, TitleCompontent } from "../Components/Cart/CartStyles.js"
 import CartTableComponent from "../Components/Cart/CartTable/CartTable"
 
 export function CheckoutPage() {
@@ -26,15 +27,20 @@ export function CheckoutPage() {
         }
     ]
     return (
-        <Content>
+        <Container>
+            <TitleCompontent>Sua sacola</TitleCompontent>
             <CartTableComponent books={books} />
-        </Content>
+            <ButtomComponent>
+                Prosseguir
+            </ButtomComponent>
+        </Container>
     )
 }
 
 
 
-const Content = styled.div`
-    display: flex;
-    justify-items: center;
-`
+
+
+
+
+
