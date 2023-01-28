@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import LogoHeader from "../Logo/LogoHeader";
 import Sidebar from "./Sidebar/Sidebar";
 import { Wrapper, Left, Margin, Middle, Right } from "./HeaderStyle";
@@ -17,7 +16,7 @@ export default function Header(){
                 <Link to="mybooks" style={{color: '#ffffff'}}><ion-icon name="library-outline"></ion-icon></Link>
             </Left>
             <Middle>
-                <LogoHeader/>
+                <Link to="/"><LogoHeader/></Link>
             </Middle>
             <Right>
                 <Link to="/login" style={{color: '#ffffff'}}><ion-icon name="person-circle-outline"></ion-icon></Link>
