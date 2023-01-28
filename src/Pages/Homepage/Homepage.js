@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import CategoryLine from "../../Components/CategoryLine/CategoryLine"
+import Header from "../../Components/Header/Header"
 import { AuthContext } from "../../Context/auth"
 import { ScreenContainer } from "./HomepageStyle"
 
@@ -7,6 +8,7 @@ export default function Homepage(){
     const {userInfo, cartItems, setCartItems, setBookId}=useContext(AuthContext)
     return (
         <ScreenContainer>
+            <Header/>
             <CategoryLine 
             cartItems={cartItems}
             setCartItems={setCartItems}
