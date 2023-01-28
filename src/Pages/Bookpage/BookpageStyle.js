@@ -10,6 +10,9 @@ export const ScreenContainer = styled.div`
   align-items: center;
   justify-content: start;
   background-color: #ffffff;
+`;
+
+export const Margin = styled.div`
   margin-top: 20px;
 `;
 

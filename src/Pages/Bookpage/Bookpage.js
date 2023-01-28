@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import Header from "../../Components/Header/Header";
 import { AuthContext } from "../../Context/auth";
-import { ScreenContainer, InfoContainer, ImgBox, Title,Line, Description, Author, Button} from "./BookpageStyle";
+import { ScreenContainer, Margin, InfoContainer, ImgBox, Title,Line, Description, Author, Button} from "./BookpageStyle";
 
 export default function Bookpage() {
     const {bookId, userInfo, cartItems, setCartItems} = useContext(AuthContext)
@@ -35,6 +36,8 @@ export default function Bookpage() {
 
   return (
     <ScreenContainer>
+      <Header/>
+      <Margin/>
       <ImgBox>
         <img src={bookInfo.img} />
       </ImgBox>

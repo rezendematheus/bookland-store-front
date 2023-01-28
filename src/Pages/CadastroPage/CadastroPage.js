@@ -1,4 +1,4 @@
-import Logo from "../../Components/Logo";
+import Logo from "../../Components/Logo/Logo";
 import {  useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -34,7 +34,7 @@ export default function CadastroPage(){
 
     return (
         <Wrapper onSubmit={OnSubmit}>
-            <Logo/>
+            <Link to="/"><Logo/></Link>
             <Input
                 placeholder="Nome"
                 type="name"

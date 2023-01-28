@@ -6,6 +6,7 @@ import AuthProvider from "./Context/auth";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import CadastroPage from "./Pages/CadastroPage/CadastroPage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
+import MyBooksPage from "./Pages/MyBooksPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/cadastro" element={<CadastroPage/>}/>
         <Route path="/book" element={<Bookpage/>}/>
+        <Route path="/mybooks" element={<MyBooksPage/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

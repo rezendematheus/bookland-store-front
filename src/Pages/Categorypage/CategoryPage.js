@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Book from "../../Components/Book/Book";
+import Header from "../../Components/Header/Header";
 import { AuthContext } from "../../Context/auth";
-import { ScreenContainer, Title,BookContainer } from "./CategoryPageStyle";
+import { ScreenContainer, Title,BookContainer, Margin } from "./CategoryPageStyle";
 
 export default function CategoryPage(){
     const [booklist, setBooklist] = useState(undefined)
@@ -21,6 +22,8 @@ export default function CategoryPage(){
 
     return (
         <ScreenContainer>
+            <Header/>
+            <Margin/>
             <Title>
                 <p>{category}</p>
             </Title>

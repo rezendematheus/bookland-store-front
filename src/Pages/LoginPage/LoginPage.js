@@ -1,4 +1,4 @@
-import Logo from "../../Components/Logo";
+import Logo from "../../Components/Logo/Logo";
 import { Wrappeer, Input, Cadastrar } from "./LoginPageStyle";
 import {  useState } from "react";
 import axios from "axios";
@@ -37,7 +37,7 @@ export default function LoginPage(){
     }else{
         return (
             <Wrappeer onSubmit={OnSubmit}>
-                <Logo/>
+                <Link to="/"><Logo/></Link>
                 <Input
                     placeholder="Email"
                     disabled={disabled}
