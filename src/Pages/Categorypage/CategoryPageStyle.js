@@ -12,6 +12,10 @@ export const ScreenContainer = styled.div`
   background-color: #e5e5e5;
 `;
 
+export const Margin = styled.div`
+  margin-top: 20px;
+`;
+
 export const Title = styled.div`
   width: 80%;
   background-color: #e3c9f7;
