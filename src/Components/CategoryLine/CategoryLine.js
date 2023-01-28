@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Book from "../Book/Book";
-import { Container, Title, BookBox } from "./CategoryLineStyles";
+import { Container, Title, BookBox, Wrapper } from "./CategoryLineStyles";
 import axios from "axios";
 
 export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,setBookId}) {
@@ -20,7 +20,7 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,s
 
 
   return (
-    <>
+    <Wrapper>
     <Container>
       <Title>{titulo}</Title>
       <BookBox>
@@ -40,6 +40,6 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,s
         ))}
       </BookBox>
     </Container>
-    </>
+    </Wrapper>
   );
 }

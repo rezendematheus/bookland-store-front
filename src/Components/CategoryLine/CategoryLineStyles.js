@@ -1,9 +1,10 @@
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import styled from "styled-components";
 
 export const Container = styled.div`
-width:80%;
+width:90%;
 height:330px;
-margin:10px;
+margin:10px 0px;
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -30,3 +31,10 @@ align-items:center;
 justify-content: space-between;
 overflow-x:scroll;
 `
+
+export const Wrapper=styled.div`
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+`;
