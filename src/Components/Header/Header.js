@@ -1,17 +1,17 @@
 import LogoHeader from "../Logo/LogoHeader";
 import Sidebar from "./Sidebar/Sidebar";
-import { Wrapper, Left, Margin, Middle, Right } from "./HeaderStyle";
+import { Wrapper, Left, Margin, Middle, Right, Menu } from "./HeaderStyle";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Header(){
-    function callSidebar(){
-        return <Sidebar/>;
-    }    
-
+    const [show,setShow]=useState(false); 
+    
     return (
         <Wrapper>
             <Left>
-                <ion-icon name="menu-outline"></ion-icon>
+                <Menu onClick={()=>setShow(!show)}><ion-icon name="menu-outline"></ion-icon></Menu>
+                <Sidebar show={show}/>
                 <Margin/>
                 <Link to="mybooks" style={{color: '#ffffff'}}><ion-icon name="library-outline"></ion-icon></Link>
             </Left>
@@ -26,3 +26,4 @@ export default function Header(){
         </Wrapper>
     );
 }
+

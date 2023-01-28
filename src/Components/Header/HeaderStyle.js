@@ -28,3 +28,5 @@ export const Right= styled.div`
     padding: 20px;
     display: flex;
 `;
+
+export const Menu= styled.div``;
