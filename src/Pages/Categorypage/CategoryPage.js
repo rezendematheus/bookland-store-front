@@ -9,7 +9,7 @@ export default function CategoryPage(){
     const {userInfo,category, cartItems, setCartItems, setBookId} = useContext(AuthContext)
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5000/${category}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/${category}`)
         .then((res)=>{
             const list = res.data
             list.sort(() => Math.random()-0.5)

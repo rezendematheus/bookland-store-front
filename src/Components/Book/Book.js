@@ -14,7 +14,7 @@ export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInf
             localStorage.setItem("cartItem", [...cartItems, id])
         } else{
             const info = {itemId: id}
-            axios.post("http://127.0.0.1:5000/into-cart",info, config)
+            axios.post(`${process.env.REACT_APP_API_BASE_URL}/into-cart`,info, config)
             .then((res)=> console.log(res))
             .catch((err)=> console.log(err.response.data) )
         }

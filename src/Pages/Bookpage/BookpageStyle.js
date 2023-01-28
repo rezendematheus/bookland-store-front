@@ -31,7 +31,6 @@ export const ImgBox = styled.div`
 export const InfoContainer = styled.div`
   width: 80%;
   min-width: 322px;
-  
   margin-top: 20px;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);

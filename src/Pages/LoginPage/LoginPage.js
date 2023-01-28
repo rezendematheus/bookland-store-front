@@ -18,7 +18,7 @@ export default function LoginPage(){
         e.preventDefault();
         setDisabled(true);
         const body={email, password};
-        const promisse=axios.post("", body);
+        const promisse=axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, body);
         promisse.then((answer)=>{
             localStorage.setItem("user", JSON.stringify({
                 token: answer.data.token,

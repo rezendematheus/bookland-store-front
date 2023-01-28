@@ -8,7 +8,7 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,s
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000")
+      .get(`${process.env.REACT_APP_API_BASE_URL}`)
       .then((res) => {
         const list = res.data
         list.sort(() => Math.random()-0.5)
