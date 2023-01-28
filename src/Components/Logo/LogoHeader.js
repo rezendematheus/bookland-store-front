@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import image from "../assets/Logo.png";
+import image from "../../assets/Logo.png";
 
-export default function Logo(){
+export default function LogoHeader(){
     return (
         <Img>
             <img src={image}/>
@@ -10,12 +10,11 @@ export default function Logo(){
 }
 
 const Img=styled.div`
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     img{
         height: auto;
-        width: 300px;
+        width: 60px;
     }
 `;
