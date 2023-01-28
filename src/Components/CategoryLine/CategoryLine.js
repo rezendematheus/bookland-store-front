@@ -3,7 +3,7 @@ import Book from "../Book/Book";
 import { Container, Title, BookBox } from "./CategoryLineStyles";
 import axios from "axios";
 
-export default function CategoryLine({cartItems, setCartItems,titulo, userInfo}) {
+export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,setBookId}) {
   const [products, setProducts] = useState(undefined);
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo})
               cartItems={cartItems}
               setCartItems={setCartItems}
               userInfo={userInfo}
+              setBookId={setBookId}
             />
         ))}
       </BookBox>

@@ -1,8 +1,9 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 import { Container, Upside, Middleside, Lowside } from "./BookStyles"
 
-export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInfo}){
-
+export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInfo,setBookId}){
+    const navigate = useNavigate();
     const config = {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       };
@@ -20,10 +21,15 @@ export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInf
        
     }
 
+    function toBookPage(id){
+        setBookId(id)
+        navigate("/book")
+    }
+
     console.log(cartItems)
 
     return(
-        <Container>
+        <Container onClick={()=> toBookPage(id)}>
             <Upside>
                 <img src={img} alt="livro"/>
             </Upside>
@@ -32,7 +38,9 @@ export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInf
             </Middleside>
             <Lowside>
                 <p>R${valor}</p>
-                <button onClick={()=> addToCart(id)}>comprar</button>
+                <button onClick={(event)=> {
+                    event.stopPropagation()
+                    addToCart(id)}}>comprar</button>
             </Lowside>
         
         </Container>

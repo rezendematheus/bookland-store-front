@@ -5,6 +5,7 @@ import CategoryPage from "./Pages/Categorypage/CategoryPage";
 import AuthProvider from "./Context/auth";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import CadastroPage from "./Pages/CadastroPage/CadastroPage";
+import Bookpage from "./Pages/Bookpage/Bookpage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/cart" element={<CartPage/>} /> 
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/cadastro" element={<CadastroPage/>}/>
+        <Route path="/book" element={<Bookpage/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

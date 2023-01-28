@@ -6,7 +6,7 @@ import { ScreenContainer, Title,BookContainer } from "./CategoryPageStyle";
 
 export default function CategoryPage(){
     const [booklist, setBooklist] = useState(undefined)
-    const {userInfo,category, cartItems, setCartItems} = useContext(AuthContext)
+    const {userInfo,category, cartItems, setCartItems, setBookId} = useContext(AuthContext)
 
     useEffect(()=>{
         axios.get(`http://127.0.0.1:5000/${category}`)
@@ -22,7 +22,7 @@ export default function CategoryPage(){
     return (
         <ScreenContainer>
             <Title>
-                <p>Aventura</p>
+                <p>{category}</p>
             </Title>
             <BookContainer>
             {category !== "" && booklist !== undefined &&
@@ -36,6 +36,7 @@ export default function CategoryPage(){
               cartItems={cartItems}
               setCartItems={setCartItems}
               userInfo={userInfo}
+              setBookId={setBookId}
             />
         ))}
             </BookContainer>
