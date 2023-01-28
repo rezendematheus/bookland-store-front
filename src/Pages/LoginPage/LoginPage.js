@@ -37,7 +37,7 @@ export default function LoginPage(){
     }else{
         return (
             <Wrappeer onSubmit={OnSubmit}>
-                <Logo/>
+                <Link to="/"><Logo/></Link>
                 <Input
                     placeholder="Email"
                     disabled={disabled}

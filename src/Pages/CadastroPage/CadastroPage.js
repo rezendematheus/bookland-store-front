@@ -34,7 +34,7 @@ export default function CadastroPage(){
 
     return (
         <Wrapper onSubmit={OnSubmit}>
-            <Logo/>
+            <Link to="/"><Logo/></Link>
             <Input
                 placeholder="Nome"
                 type="name"
