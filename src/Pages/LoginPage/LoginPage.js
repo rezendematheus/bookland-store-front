@@ -18,7 +18,7 @@ export default function LoginPage(){
         e.preventDefault();
         setDisabled(true);
         const body={email, password};
-        const promisse=axios.post("", body);
+        const promisse=axios.post("http://localhost:5000/login", body);
         promisse.then((answer)=>{
             localStorage.setItem("user", JSON.stringify({
                 token: answer.data.token,
