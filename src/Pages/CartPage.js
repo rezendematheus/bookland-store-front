@@ -9,13 +9,13 @@ import { AuthContext } from "../Context/auth.js"
 export function CartPage() {
     const {userInfo} = useContext(AuthContext)
     //const cartItem = localStorage.getItem("cartItem")
-    const token = JSON.parse(localStorage.getItem("user"))
+    const token = localStorage.getItem("user")
     const [books, setBooks] = useState([])
     
     
 
     const config = {
-        headers: { Authorization: `Bearer ${userInfo.token || token.token}` },
+        headers: { Authorization: `Bearer ${userInfo.token }` },
     };
     
     useEffect(()=>{

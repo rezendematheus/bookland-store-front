@@ -23,10 +23,7 @@ export default function LoginPage(){
         const promisse=axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, body);
         promisse.then((answer)=>{
             setUserInfo(answer.data)
-            localStorage.setItem("user", JSON.stringify({
-                token: answer.data.token,
-                name: answer.data.name
-            }));
+            localStorage.setItem("user", answer.data.token);
             setNext(true);
         });
         promisse.catch((error)=>{

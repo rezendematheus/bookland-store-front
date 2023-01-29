@@ -4,14 +4,16 @@ import { Container, Upside, Middleside, Lowside } from "./BookStyles"
 
 export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInfo,setBookId}){
     const navigate = useNavigate();
+    const token = localStorage.getItem("user")
     const config = {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
+        headers: { Authorization: `Bearer ${userInfo.token }` },
       };
+      
 
     function addToCart(id){
-        if(!userInfo.token){
-            setCartItems([...cartItems, id])
-            localStorage.setItem("cartItem", [...cartItems, id])
+        if(!userInfo.token ){
+            alert("faça login para comprar")
+            navigate("/login")
         } else{
             const info = {itemId: id}
             axios.post(`${process.env.REACT_APP_API_BASE_URL}/into-cart`,info, config)
