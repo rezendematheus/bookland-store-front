@@ -1,7 +1,7 @@
-import ButtomComponent from "../Components/Cart/ButtomComponent.js"
-import { Container, TitleCompontent } from "../Components/Cart/CartStyles.js"
-import CartTableComponent from "../Components/Cart/CartTable/CartTable"
-import Header from "../Components/Header/Header.js"
+import ButtomComponent from "../../Components/Cart/ButtomComponent.js"
+import { Container, TitleCompontent } from "../../Components/Cart/CartStyles.js"
+import CartTableComponent from "../../Components/Cart/CartTable/CartTable"
+import Header from "../../Components/Header/Header.js"
 
 export function CartPage() {
     const books = [

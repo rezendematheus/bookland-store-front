@@ -28,6 +28,7 @@ const StyledButtomComponent = styled(Link)`
     font-family: Roboto;
     font-size: 16px;
     line-height: 19px;
+    text-decoration: none;
 
     color: white;
 `
