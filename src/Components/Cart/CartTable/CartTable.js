@@ -15,10 +15,10 @@ export default function CartTableComponent({books}){
                 <tbody>
                     {books.map(book =>
                         <BookInCart
-                            imagem={book.imagem}
+                            imagem={book.img}
                             titulo={book.titulo}
                             valor={book.valor}
-                            quantidade={book.quantidade}
+                            quantidade={1}
                             id={book.id}
                         />
                     )}

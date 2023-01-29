@@ -1,16 +1,18 @@
 import Logo from "../../Components/Logo/Logo";
 import { Wrappeer, Input, Cadastrar } from "./LoginPageStyle";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";
 import RenderButton from "../../Components/Render/RenderButton";
+import { AuthContext } from "../../Context/auth";
 
 export default function LoginPage(){
-    const [userInfo, setUserInfo]=useState({
+    const { setUserInfo} = useContext(AuthContext)
+    const [loginInfo, setLoginInfo]=useState({
         email:"",
         password:""
     });
-    const {email, password}=userInfo;
+    const {email, password}=loginInfo;
     const [disabled, setDisabled]=useState(false);
     const [next,setNext]=useState(false);
 
@@ -20,6 +22,7 @@ export default function LoginPage(){
         const body={email, password};
         const promisse=axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, body);
         promisse.then((answer)=>{
+            setUserInfo(answer.data)
             localStorage.setItem("user", JSON.stringify({
                 token: answer.data.token,
                 name: answer.data.name
@@ -44,7 +47,7 @@ export default function LoginPage(){
                     required
                     value={email}
                     type="email"
-                    onChange={(e)=>setUserInfo({...userInfo, email: e.target.value})}
+                    onChange={(e)=>setLoginInfo({...loginInfo, email: e.target.value})}
                 />
                 <Input 
                     placeholder="Senha"
@@ -52,7 +55,7 @@ export default function LoginPage(){
                     required
                     value={password}
                     type="password"
-                    onChange={(e)=>setUserInfo({...userInfo, password: e.target.value})}
+                    onChange={(e)=>setLoginInfo({...loginInfo, password: e.target.value})}
                 />
                 <button
                     type="submit"
