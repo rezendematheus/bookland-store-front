@@ -41,3 +41,13 @@ export const BookContainer = styled.div`
   justify-content: space-between;
   
 `;
+
+export const Message = styled.div`
+  width: 100%;
+  margin-top:30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto";
+  font-size: 20px;
+`;

@@ -1,5 +1,6 @@
 import {  Title, Margin, Names } from "./SidebarStyle";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Sidebar(props){
     const {show}=props;
@@ -9,10 +10,34 @@ export default function Sidebar(props){
             <Title>Categorias</Title>
             <Margin/>
             <Names>
-                <p>Adicionados recentemente</p>
-                <p>Romance</p>
-                <p>Terror</p>
+                <Link to={"/category"} state={{categoria: "Aventura"}}>
+                <p>Aventura</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Fantasia"}}>
                 <p>Fantasia</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Negocios"}}>
+                <p>Negocios</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Terror"}}>
+                <p>Terror</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Tecnologia"}}>
+                <p>Tecnologia</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Poesia"}}>
+                <p>Poesia</p>
+                </Link>
+
+                <Link to={"/category"} state={{categoria: "Romance"}}>
+                <p>Romance</p>
+                </Link>
+
             </Names>
         </Wrapper>
     );
@@ -35,5 +60,8 @@ const Wrapper=styled.div`
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+    a{
+        text-decoration:none;
+    }
 `;
 

@@ -26,7 +26,7 @@ export default function Book({id,titulo,valor,img,cartItems,setCartItems,userInf
         navigate("/book")
     }
 
-    console.log(cartItems)
+    
 
     return(
         <Container onClick={()=> toBookPage(id)}>

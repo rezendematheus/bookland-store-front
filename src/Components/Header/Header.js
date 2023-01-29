@@ -13,7 +13,7 @@ export default function Header(){
                 <Menu onClick={()=>setShow(!show)}><ion-icon name="menu-outline"></ion-icon></Menu>
                 <Sidebar show={show}/>
                 <Margin/>
-                <Link to="mybooks" style={{color: '#ffffff'}}><ion-icon name="library-outline"></ion-icon></Link>
+                <Link to="/mybooks" style={{color: '#ffffff'}}><ion-icon name="library-outline"></ion-icon></Link>
             </Left>
             <Middle>
                 <Link to="/"><LogoHeader/></Link>
