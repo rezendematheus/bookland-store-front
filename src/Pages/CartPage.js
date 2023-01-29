@@ -1,32 +1,33 @@
+import axios from "axios"
+import { useContext, useEffect, useState } from "react"
 import ButtomComponent from "../Components/Cart/ButtomComponent.js"
 import { Container, TitleCompontent } from "../Components/Cart/CartStyles.js"
 import CartTableComponent from "../Components/Cart/CartTable/CartTable"
 import Header from "../Components/Header/Header.js"
+import { AuthContext } from "../Context/auth.js"
 
 export function CartPage() {
-    const books = [
-        {
-            imagem: "https://lojasaraivanew.vtexassets.com/arquivos/ids/198381-1200-auto?v=638068006528530000&width=1200&height=auto&aspect=true",
-            titulo: "O homem mais rico da Babilônia",
-            valor: "24.90",
-            quantidade: "1",
-            id: 1
-        },
-        {
-            imagem: "https://lojasaraivanew.vtexassets.com/arquivos/ids/198381-1200-auto?v=638068006528530000&width=1200&height=auto&aspect=true",
-            titulo: "O homem mais rico da Babilônia",
-            valor: "24.90",
-            quantidade: "1",
-            id: 2
-        },
-        {
-            imagem: "https://lojasaraivanew.vtexassets.com/arquivos/ids/198381-1200-auto?v=638068006528530000&width=1200&height=auto&aspect=true",
-            titulo: "O homem mais rico da Babilônia",
-            valor: "24.90",
-            quantidade: "1",
-            id: 3
-        }
-    ]
+    const {userInfo} = useContext(AuthContext)
+    //const cartItem = localStorage.getItem("cartItem")
+    const token = JSON.parse(localStorage.getItem("user"))
+    const [books, setBooks] = useState([])
+    console.log(token.token)
+    
+
+    const config = {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+    };
+    
+    useEffect(()=>{
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-cart`,config)
+        .then((res)=> setBooks(res.data))
+        .catch((err)=> console.log(err))
+
+    },[])
+
+    console.log(books)
+   
+
     return (
         <Container>
             <Header/>

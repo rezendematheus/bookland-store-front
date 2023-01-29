@@ -28,7 +28,7 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,s
           products.map((item) => (
             <Book
               key={item._id}
-              id={item._id}
+              id={item.id}
               titulo={item.titulo}
               valor={item.valor}
               img={item.img}

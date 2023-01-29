@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Wrappeer=styled.div`
+export const Wrappeer=styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
