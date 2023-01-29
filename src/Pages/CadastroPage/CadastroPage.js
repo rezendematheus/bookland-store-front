@@ -21,6 +21,7 @@ export default function CadastroPage(){
         setDisabled(true);
         if(passwordConfirmation!==password){
             alert("Confirmação de senha e senha devem ser iguais");
+            setDisabled(false);
             return;
         }
         const body={email, password, name};
