@@ -11,11 +11,11 @@ export function CartPage() {
     //const cartItem = localStorage.getItem("cartItem")
     const token = JSON.parse(localStorage.getItem("user"))
     const [books, setBooks] = useState([])
-    console.log(token.token)
+    
     
 
     const config = {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
+        headers: { Authorization: `Bearer ${userInfo.token || token.token}` },
     };
     
     useEffect(()=>{
