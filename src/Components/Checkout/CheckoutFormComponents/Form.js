@@ -4,6 +4,7 @@ import Payment from '../Payment'
 
 export default function Form({ props }) {
     const { type, handleForm, form } = props
+    
     const creditPay = (
         <>
             <InsertCamp>

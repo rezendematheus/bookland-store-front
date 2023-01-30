@@ -14,7 +14,7 @@ export default function CategoryLine({cartItems, setCartItems,titulo, userInfo,s
         list.sort(() => Math.random()-0.5)
         setProducts(list);
       })
-      .catch((err) => console.log(err.response.data));
+      .catch((err) => console.log(err.response));
   }, []);
 
 
