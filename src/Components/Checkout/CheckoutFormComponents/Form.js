@@ -3,29 +3,29 @@ import { formatCpf, mTel, mCEP, mCredit, mValidade } from '../inputMasks'
 import Payment from '../Payment'
 
 export default function Form({ props }) {
-    const { type, handleForm, form } = props
+    const { type, handleForm, form, paymentType , setPaymentType } = props
     
     const creditPay = (
         <>
             <InsertCamp>
                 <InputLabel htmlFor="credit">Número do cartão</InputLabel>
-                <Input type="text" onChange={handleForm} value={mCredit(form.credit)} maxLength={19} minLength={19} name="credit" placeholder='CEP' required />
+                <Input type="text" onChange={handleForm} value={mCredit(form.credit)} maxLength={19} minLength={19} name="credit" placeholder='' required={paymentType === 'credit' ? true : false} />
             </InsertCamp>
             <InsertCamp>
                 <InputLabel htmlFor="parcelas">Parcelas</InputLabel>
-                <Input type="text" onChange={handleForm} value={form.parcelas} maxLength={2} minLength={2} max={12} name="parcelas" placeholder='' required />
+                <Input type="text" onChange={handleForm} value={form.parcelas} maxLength={2} minLength={2} max={12} name="parcelas" placeholder='' required={paymentType === 'credit' ? true : false} />
             </InsertCamp>
             <InsertCamp>
                 <InputLabel htmlFor="creditname">Nome no cartão</InputLabel>
-                <Input type="text" onChange={handleForm} value={(form.creditname).toUpperCase()} name="creditname" placeholder='' required />
+                <Input type="text" onChange={handleForm} value={(form.creditname).toUpperCase()} name="creditname" placeholder='' required={paymentType === 'credit' ? true : false} />
             </InsertCamp>
             <InsertCamp>
                 <InputLabel htmlFor="validade">Validade</InputLabel>
-                <Input type="text" onChange={handleForm} value={mValidade(form.validade)} maxLength={5} minLength={5} name="validade" placeholder='' required />
+                <Input type="text" onChange={handleForm} value={mValidade(form.validade)} maxLength={5} minLength={5} name="validade" placeholder='' required={paymentType === 'credit' ? true : false} />
             </InsertCamp>
             <InsertCamp>
                 <InputLabel htmlFor="seccode">Código de segurança</InputLabel>
-                <Input type="text" onChange={handleForm} value={form.seccode} maxLength={3} minLength={3} name="seccode" placeholder='' required />
+                <Input type="text" onChange={handleForm} value={form.seccode} maxLength={3} minLength={3} name="seccode" placeholder='' required={paymentType === 'credit' ? true : false} />
             </InsertCamp>
         </>
     )
@@ -43,7 +43,7 @@ export default function Form({ props }) {
                     </InsertCamp>
                     <InsertCamp>
                         <InputLabel htmlFor="cpf">CPF</InputLabel>
-                        <Input type="text" onChange={handleForm} value={formatCpf(form.cpf)} maxLength={14} minLength={14} name="cpf" pattern='/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/' placeholder='Insira aqui seu CPF' required />
+                        <Input type="text" onChange={handleForm} value={formatCpf(form.cpf)} maxLength={14} minLength={14} name="cpf" placeholder='Insira aqui seu CPF' required />
                     </InsertCamp>
                     <InsertCamp>
                         <InputLabel htmlFor="phone">Telefone</InputLabel>
@@ -61,7 +61,7 @@ export default function Form({ props }) {
                     <>
                         <InsertCamp>
                             <InputLabel htmlFor="cep">CEP</InputLabel>
-                            <Input type="text" onChange={handleForm} value={mCEP(form.credit)} maxLength={10} minLength={10} name="cep" placeholder='' required />
+                            <Input type="text" onChange={handleForm} value={mCEP(form.cep)} maxLength={10} minLength={10} name="cep" placeholder='' required />
                         </InsertCamp>
                         <AdressInputs>
                             <InsertCamp>
@@ -84,7 +84,7 @@ export default function Form({ props }) {
             {type === "payment" &&
                 (
                     <>
-                        <Payment creditPay={creditPay}/>
+                        <Payment creditPay={creditPay} paymentType={paymentType} setPaymentType={setPaymentType}/>
                     </>
                 )
 

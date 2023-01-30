@@ -1,38 +1,36 @@
-import { useState } from "react"
+
 import { AiOutlineArrowDown } from "react-icons/ai"
 import styled from "styled-components"
-import Form from "./CheckoutFormComponents/Form"
 
-export default function Payment({creditPay}){
+export default function Payment({creditPay, paymentType, setPaymentType}){
 
-    const [tab, setTab] = useState("pix")
     return(
         <PaymentContainer>
             <Tabs>
-                <Tab onClick={()=> setTab("pix")} selected={tab === 'pix' ? true : false}>
+                <Tab onClick={()=> setPaymentType("pix")} selected={paymentType === 'pix' ? true : false}>
                     Pix
                 </Tab>
-                <Tab onClick={()=> setTab("boleto")} selected={tab === 'boleto' ? true : false}>
+                <Tab onClick={()=> setPaymentType("boleto")} selected={paymentType === 'boleto' ? true : false}>
                     Boleto
                 </Tab>
-                <Tab onClick={()=> setTab("credit")} selected={tab === 'credit' ? true : false}>
+                <Tab onClick={()=> setPaymentType("credit")} selected={paymentType === 'credit' ? true : false}>
                     Cartão de crédito
                 </Tab>
             </Tabs>
-            <TabMirror selected={tab}>
-                {tab==="pix" && (
+            <TabMirror selected={paymentType}>
+                {paymentType==="pix" && (
                     <PaymentBox>
-                        <PixImage></PixImage>
                         <p>Para pagar finalize sua compra abaixo</p>
                         <AiOutlineArrowDown />
                     </PaymentBox>
                 )}
-                {tab==="boleto" && (
+                {paymentType==="boleto" && (
                     <PaymentBox>
-                        <p>O boleto bancário será exibido após a confirmação da compra.</p>
+                        <p>O boleto bancário será exibido após a confirmação da compra</p>
+                        <AiOutlineArrowDown />
                     </PaymentBox>
                 )}
-                {tab==='credit' && (
+                {paymentType==='credit' && (
                     creditPay
                 )}
             </TabMirror>
@@ -78,6 +76,8 @@ const PaymentBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 `
 
 const PaymentContainer = styled.div`
@@ -90,8 +90,4 @@ const PaymentContainer = styled.div`
     width: 100%;
     height: auto;
     padding: 10px;
-`
-
-const PixImage = styled.div`
-
 `

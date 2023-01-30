@@ -1,12 +1,33 @@
 import { useState } from 'react'
+import { redirect } from 'react-router-dom'
 import styled, { useTheme } from 'styled-components'
 import ButtomComponent from '../../Components/Cart/ButtomComponent'
 import { Container} from '../../Components/Cart/CartStyles'
 import CheckoutForm from '../../Components/Checkout/CheckoutForm'
 import Header from '../../Components/Header/Header'
+import { useContext, useEffect } from 'react'
+import { AuthContext } from '../../Context/auth'
+import axios from 'axios'
 
 export default function CheckoutPage(){
+    const {userInfo} = useContext(AuthContext)
+    const config = {
+        headers: { Authorization: `Bearer ${userInfo.token }` },
+    };
+    
+    useEffect(()=>{
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-cart`,config)
+        .then((res)=> {
+            let valor = 0
+            res.data.forEach(item => valor += Number(item.valor))
+
+        })
+        .catch((err)=> console.log(err))
+
+    },[])
     const types = ["client", "adress", "payment"]
+    const [price, setPrice] = useState(0)
+    const [paymentType, setPaymentType] = useState("pix")
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -49,6 +70,9 @@ export default function CheckoutPage(){
             [e.target.name]: e.target.value
         })
     }
+    function handleSubmit(){
+
+    }
     return(
         <Container>
             <Header/>
@@ -56,9 +80,10 @@ export default function CheckoutPage(){
                 Finalize seu pedido
             </TitleCompontent>
             {types.map(item => (
-                <CheckoutForm key={item} type={item} form={form} handleForm={handleForm} setForm={setForm} toggleOpens={toggleOpens} open={item === 'client' ? open1 : item === 'adress' ? open2 : open3} setOpen={item === 'client' ? setOpen1 : item === 'adress' ? setOpen2 : setOpen3}/>
+                <CheckoutForm key={item} type={item} form={form} handleForm={handleForm} setForm={setForm} toggleOpens={toggleOpens} open={item === 'client' ? open1 : item === 'adress' ? open2 : open3} setOpen={item === 'client' ? setOpen1 : item === 'adress' ? setOpen2 : setOpen3} paymentType={paymentType} setPaymentType={setPaymentType}/>
             ))}
-            <ButtomComponent>
+            <TotalValue><p>Valor total:</p> {`R$${price?.toString().replace(".",",")}`}</TotalValue>
+            <ButtomComponent onClick={handleSubmit}>
                 Fazer pedido
             </ButtomComponent>
         </Container>
@@ -76,4 +101,13 @@ const TitleCompontent = styled.div`
     line-height: 28px;
     letter-spacing: 0.08em;
     text-align: left;
+`
+
+const TotalValue = styled.div`
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto;
+    font-size: 16px;
+
 `
