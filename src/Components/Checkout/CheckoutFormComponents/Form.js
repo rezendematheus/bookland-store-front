@@ -1,8 +1,33 @@
 import styled from 'styled-components'
 import { formatCpf, mTel, mCEP, mCredit, mValidade } from '../inputMasks'
+import Payment from '../Payment'
 
 export default function Form({ props }) {
     const { type, handleForm, form } = props
+    const creditPay = (
+        <>
+            <InsertCamp>
+                <InputLabel htmlFor="credit">Número do cartão</InputLabel>
+                <Input type="text" onChange={handleForm} value={mCredit(form.credit)} maxLength={19} minLength={19} name="credit" placeholder='CEP' required />
+            </InsertCamp>
+            <InsertCamp>
+                <InputLabel htmlFor="parcelas">Parcelas</InputLabel>
+                <Input type="text" onChange={handleForm} value={form.parcelas} maxLength={2} minLength={2} max={12} name="parcelas" placeholder='' required />
+            </InsertCamp>
+            <InsertCamp>
+                <InputLabel htmlFor="creditname">Nome no cartão</InputLabel>
+                <Input type="text" onChange={handleForm} value={(form.creditname).toUpperCase()} name="creditname" placeholder='' required />
+            </InsertCamp>
+            <InsertCamp>
+                <InputLabel htmlFor="validade">Validade</InputLabel>
+                <Input type="text" onChange={handleForm} value={mValidade(form.validade)} maxLength={5} minLength={5} name="validade" placeholder='' required />
+            </InsertCamp>
+            <InsertCamp>
+                <InputLabel htmlFor="seccode">Código de segurança</InputLabel>
+                <Input type="text" onChange={handleForm} value={form.seccode} maxLength={3} minLength={3} name="seccode" placeholder='' required />
+            </InsertCamp>
+        </>
+    )
     return (
         <StyledForm>
             {type === "client" && (
@@ -58,34 +83,15 @@ export default function Form({ props }) {
             {type === "payment" &&
                 (
                     <>
-                        <InsertCamp>
-                            <InputLabel htmlFor="credit">Número do cartão</InputLabel>
-                            <Input type="text" onChange={handleForm} value={mCredit(form.credit)} maxLength={19} minLength={19} name="credit" placeholder='CEP' required />
-                        </InsertCamp>
-                        <InsertCamp>
-                            <InputLabel htmlFor="parcelas">Parcelas</InputLabel>
-                            <Input type="text" onChange={handleForm} value={form.parcelas} maxLength={2} minLength={2} max={12} name="parcelas" placeholder='' required />
-                        </InsertCamp>
-                        <InsertCamp>
-                            <InputLabel htmlFor="creditname">Nome no cartão</InputLabel>
-                            <Input type="text" onChange={handleForm} value={(form.creditname).toUpperCase()} name="creditname" placeholder='' required />
-                        </InsertCamp>
-                        <InsertCamp>
-                            <InputLabel htmlFor="validade">Validade</InputLabel>
-                            <Input type="text" onChange={handleForm} value={mValidade(form.validade)} maxLength={5} minLength={5} name="validade" placeholder='' required />
-                        </InsertCamp>
-                        <InsertCamp>
-                            <InputLabel htmlFor="seccode">Código de segurança</InputLabel>
-                            <Input type="text" onChange={handleForm} value={form.seccode} maxLength={3} minLength={3} name="seccode" placeholder='' required />
-                        </InsertCamp>
+                        <Payment creditPay={creditPay}/>
                     </>
                 )
 
             }
+            
         </StyledForm>
     )
 }
-
 
 const StyledForm = styled.form`
     width: 100%;
