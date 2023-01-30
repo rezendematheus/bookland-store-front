@@ -20,7 +20,7 @@ export default function CheckoutPage(){
         .then((res)=> {
             let valor = 0
             res.data.forEach(item => valor += Number(item.valor))
-
+            setPrice(valor)
         })
         .catch((err)=> console.log(err))
 
