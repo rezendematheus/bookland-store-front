@@ -8,6 +8,7 @@ import CadastroPage from "./Pages/CadastroPage/CadastroPage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
 import MyBooksPage from "./Pages/MyBooksPage";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
+import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/category" element={<CategoryPage/>}/>
         <Route path="/cart" element={<CartPage/>} /> 
         <Route path="/checkout" element={<CheckoutPage/>} />
-        <Route path="/payment/:idPay" element={<CheckoutPage/>} />
+        <Route path="/payment/:idPay" element={<PaymentPage/>} />
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/cadastro" element={<CadastroPage/>}/>
         <Route path="/book" element={<Bookpage/>}/>

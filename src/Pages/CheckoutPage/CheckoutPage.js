@@ -75,6 +75,12 @@ export default function CheckoutPage() {
 
         //suposta requisição para guardar os dados (não deu mais tempo)
 
+        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/delete-many-cart`, config)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => console.log(err))
+
         navigate(`/payment/${paymentType}`)
     }
     return (
