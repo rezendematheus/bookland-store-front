@@ -25,7 +25,7 @@ export default function CadastroPage(){
             return;
         }
         const body={email, password, name};
-        const promisse=axios.post(`${process.env.REACT_APP_API_BASE_URL}/cadastro`, body);
+        const promisse=axios.post(`${process.env.REACT_APP_API_BASE_URL}cadastro`, body);
         promisse.then(()=>{navigate('/login')});
         promisse.catch((error)=>{
             alert("Erro! Tente novamente.", error);
