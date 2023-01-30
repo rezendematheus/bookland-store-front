@@ -94,7 +94,7 @@ export default function Form({ props }) {
     )
 }
 
-const StyledForm = styled.form`
+const StyledForm = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;

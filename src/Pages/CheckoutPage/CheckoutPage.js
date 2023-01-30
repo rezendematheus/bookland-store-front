@@ -1,30 +1,30 @@
 import { useState } from 'react'
-import { redirect } from 'react-router-dom'
-import styled, { useTheme } from 'styled-components'
-import ButtomComponent from '../../Components/Cart/ButtomComponent'
-import { Container} from '../../Components/Cart/CartStyles'
+import styled from 'styled-components'
+import { Container } from '../../Components/Cart/CartStyles'
 import CheckoutForm from '../../Components/Checkout/CheckoutForm'
 import Header from '../../Components/Header/Header'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '../../Context/auth'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-export default function CheckoutPage(){
-    const {userInfo} = useContext(AuthContext)
+export default function CheckoutPage() {
+    const { userInfo } = useContext(AuthContext)
     const config = {
-        headers: { Authorization: `Bearer ${userInfo.token }` },
+        headers: { Authorization: `Bearer ${userInfo.token}` },
     };
-    
-    useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-cart`,config)
-        .then((res)=> {
-            let valor = 0
-            res.data.forEach(item => valor += Number(item.valor))
-            setPrice(valor)
-        })
-        .catch((err)=> console.log(err))
 
-    },[])
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-cart`, config)
+            .then((res) => {
+                let valor = 0
+                res.data.forEach(item => valor += Number(item.valor))
+                setPrice(valor)
+            })
+            .catch((err) => console.log(err))
+
+    }, [])
+    const navigate = useNavigate()
     const types = ["client", "adress", "payment"]
     const [price, setPrice] = useState(0)
     const [paymentType, setPaymentType] = useState("pix")
@@ -37,26 +37,26 @@ export default function CheckoutPage(){
         number: "",
         city: "",
         cep: "",
-        credit:"",
-        creditname:"",
-        parcelas:"",
-        validade:"",
-        seccode:""
+        credit: "",
+        creditname: "",
+        parcelas: "",
+        validade: "",
+        seccode: ""
     })
     const [open1, setOpen1] = useState(true)
     const [open2, setOpen2] = useState(false)
     const [open3, setOpen3] = useState(false)
 
-    function toggleOpens(setOpen){
+    function toggleOpens(setOpen) {
         const setOpens = [setOpen1, setOpen2, setOpen3]
         const opens = [open1, open2, open3]
         for (let i = 0; i < opens.length; i++) {
-            if(setOpen === setOpens[i]){
+            if (setOpen === setOpens[i]) {
                 setOpen(!opens[i])
-                if(!opens === false){
+                if (!opens === false) {
                     for (let j = 0; j < opens.length; j++) {
-                        if(j !== i){
-                            let func =setOpens[j]
+                        if (j !== i) {
+                            let func = setOpens[j]
                             func(false)
                         }
                     }
@@ -64,28 +64,34 @@ export default function CheckoutPage(){
             }
         }
     }
-    function handleForm(e){
+    function handleForm(e) {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         })
     }
-    function handleSubmit(){
+    function handleSubmit(e) {
+        e.preventDefault()
 
+        //suposta requisição para guardar os dados (não deu mais tempo)
+
+        navigate(`/payment/${paymentType}`)
     }
-    return(
+    return (
         <Container>
-            <Header/>
+            <Header />
             <TitleCompontent>
                 Finalize seu pedido
             </TitleCompontent>
-            {types.map(item => (
-                <CheckoutForm key={item} type={item} form={form} handleForm={handleForm} setForm={setForm} toggleOpens={toggleOpens} open={item === 'client' ? open1 : item === 'adress' ? open2 : open3} setOpen={item === 'client' ? setOpen1 : item === 'adress' ? setOpen2 : setOpen3} paymentType={paymentType} setPaymentType={setPaymentType}/>
-            ))}
+            <Form id='form1' onSubmit={handleSubmit}>
+                {types.map(item => (
+                    <CheckoutForm key={item} type={item} form={form} handleForm={handleForm} setForm={setForm} toggleOpens={toggleOpens} open={item === 'client' ? open1 : item === 'adress' ? open2 : open3} setOpen={item === 'client' ? setOpen1 : item === 'adress' ? setOpen2 : setOpen3} paymentType={paymentType} setPaymentType={setPaymentType} />
+                ))}
             <TotalValue><p>Valor total:</p> {`R$${price?.toString().replace(".",",")}`}</TotalValue>
-            <ButtomComponent onClick={handleSubmit}>
+            <ButtomComponent type='submit' form="form1">
                 Fazer pedido
             </ButtomComponent>
+            </Form>
         </Container>
     )
 }
@@ -110,4 +116,32 @@ const TotalValue = styled.div`
     font-family: Roboto;
     font-size: 16px;
 
+`
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const ButtomComponent = styled.button`
+    width: 242px;
+    height: 37px;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+    background-color: #AC7BD2;
+
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+
+    color: white;
 `
