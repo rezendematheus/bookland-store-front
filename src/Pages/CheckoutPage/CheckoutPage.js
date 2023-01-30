@@ -14,7 +14,13 @@ export default function CheckoutPage(){
         phone: "",
         adress: "",
         number: "",
-        city: ""
+        city: "",
+        cep: "",
+        credit:"",
+        creditname:"",
+        parcelas:"",
+        validade:"",
+        seccode:""
     })
     const [open1, setOpen1] = useState(true)
     const [open2, setOpen2] = useState(false)

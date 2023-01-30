@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { formatCpf, mTel, mCEP, mCredit, mValidade } from '../inputMasks'
 
 export default function Form({ props }) {
     const { type, handleForm, form } = props
@@ -16,11 +17,11 @@ export default function Form({ props }) {
                     </InsertCamp>
                     <InsertCamp>
                         <InputLabel htmlFor="cpf">CPF</InputLabel>
-                        <Input type="text" onChange={handleForm} value={form.cpf} maxLength={11} minLength={11} name="cpf" pattern='/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/' placeholder='Insira aqui seu CPF' required />
+                        <Input type="text" onChange={handleForm} value={formatCpf(form.cpf)} maxLength={14} minLength={14} name="cpf" pattern='/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/' placeholder='Insira aqui seu CPF' required />
                     </InsertCamp>
                     <InsertCamp>
                         <InputLabel htmlFor="phone">Telefone</InputLabel>
-                        <Input type="text" onChange={handleForm} value={form.phone} name="phone" placeholder='Insira aqui seu telefone' required />
+                        <Input type="text" onChange={handleForm} value={mTel(form.phone)} maxLength={14} minLength={14} name="phone" placeholder='Insira aqui seu telefone' required />
                     </InsertCamp>
                 </>
             )}
@@ -32,7 +33,10 @@ export default function Form({ props }) {
             {type === "adress" &&
                 (
                     <>
-
+                        <InsertCamp>
+                            <InputLabel htmlFor="cep">CEP</InputLabel>
+                            <Input type="text" onChange={handleForm} value={mCEP(form.credit)} maxLength={10} minLength={10} name="cep" placeholder='' required />
+                        </InsertCamp>
                         <AdressInputs>
                             <InsertCamp>
                                 <InputLabel htmlFor="adress">Endereço</InputLabel>
@@ -45,7 +49,7 @@ export default function Form({ props }) {
                         </AdressInputs>
                         <InsertCamp>
                             <InputLabel htmlFor="city">Cidade</InputLabel>
-                            <Input type="text" onChange={handleForm} value={form.city} name="city" placeholder='Insira aqui sua cidade' required />
+                            <Input type="text" onChange={handleForm} value={form.city} name="city" placeholder='' required />
                         </InsertCamp>
                     </>
                 )
@@ -54,20 +58,25 @@ export default function Form({ props }) {
             {type === "payment" &&
                 (
                     <>
-
-                        <AdressInputs>
-                            <InsertCamp>
-                                <InputLabel htmlFor="adress">Endereço</InputLabel>
-                                <Input type="text" onChange={handleForm} name="name" placeholder='Rua, Avenida, Travessa, etc...' required />
-                            </InsertCamp>
-                            <InsertCamp>
-                                <InputLabel htmlFor="number">Número</InputLabel>
-                                <Input type="text" onChange={handleForm} name="email" placeholder='N°' required />
-                            </InsertCamp>
-                        </AdressInputs>
                         <InsertCamp>
-                            <InputLabel htmlFor="city">Cidade</InputLabel>
-                            <Input type="text" onChange={handleForm} placeholder='Insira aqui sua cidade' required />
+                            <InputLabel htmlFor="credit">Número do cartão</InputLabel>
+                            <Input type="text" onChange={handleForm} value={mCredit(form.credit)} maxLength={19} minLength={19} name="credit" placeholder='CEP' required />
+                        </InsertCamp>
+                        <InsertCamp>
+                            <InputLabel htmlFor="parcelas">Parcelas</InputLabel>
+                            <Input type="text" onChange={handleForm} value={form.parcelas} maxLength={2} minLength={2} max={12} name="parcelas" placeholder='' required />
+                        </InsertCamp>
+                        <InsertCamp>
+                            <InputLabel htmlFor="creditname">Nome no cartão</InputLabel>
+                            <Input type="text" onChange={handleForm} value={(form.creditname).toUpperCase()} name="creditname" placeholder='' required />
+                        </InsertCamp>
+                        <InsertCamp>
+                            <InputLabel htmlFor="validade">Validade</InputLabel>
+                            <Input type="text" onChange={handleForm} value={mValidade(form.validade)} maxLength={5} minLength={5} name="validade" placeholder='' required />
+                        </InsertCamp>
+                        <InsertCamp>
+                            <InputLabel htmlFor="seccode">Código de segurança</InputLabel>
+                            <Input type="text" onChange={handleForm} value={form.seccode} maxLength={3} minLength={3} name="seccode" placeholder='' required />
                         </InsertCamp>
                     </>
                 )
